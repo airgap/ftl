@@ -42,8 +42,8 @@ var FTL = {
 			return Math.min(200, Math.max(-200, v))
 		}
 		var pD = {
-			x: l(delta.x * 2),
-			y: l(delta.y * 2)
+			x: l(delta.x * 4),
+			y: l(delta.y * 4)
 		};
 		FTL.pC = {
 			x: c.x + pD.x,

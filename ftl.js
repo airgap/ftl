@@ -42,8 +42,8 @@ var FTL = {
 			return Math.min(200, Math.max(-200, v))
 		}
 		var projectedDelta = {
-			x: lim(delta.x * 2),
-			y: lim(delta.y * 2)
+			x: lim(delta.x * 4),
+			y: lim(delta.y * 4)
 		};
 		FTL.predictedCpos = {
 			x: c.x + projectedDelta.x,
