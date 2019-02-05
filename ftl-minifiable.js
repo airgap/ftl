@@ -1,109 +1,94 @@
-var FTL = {
-	lastPos: {
+(k=>{
+	var R={
+		O:document,
+		V:CustomEvent,
+	P: {
 		x: 0,
 		y: 0
 	},
-	cp: {
-		x: 0,
-		y: 0
-	},
-	foreseen: null,
-	moved: e => {
+	M: e => {
 		var c = {
 			x: e.clientX,
 			y: e.clientY
-		};
-		FTL.cp = c;
-		FTL.pollCursor();
+		}
+		R.j = c
+		R.u()
 	},
-	pollCursor: () => {
-		var c = FTL.cp;
+	u: k => {
+			//Keep the cursor from jumping super far away.
+			var l=v=>{
+				return Math.min(200, Math.max(-200, v))
+			};
 
 		//deltas
-		var p = FTL.lastPos || {
-			x: 0,
-			y: 0
-		};
-		var p2 = FTL.cp || {
-			x: 0,
-			y: 0
-		};
-		var delta = {
-			x: p2.x - p.x,
-			y: p2.y - p.y
-		};
-		if (!delta) delta = {
-			x: 0,
-			y: 0
-		};
-
-		//Keep the cursor from jumping super far away.
-		function l(v) {
-			return Math.min(200, Math.max(-200, v))
+		var q = R.j,d = {
+			x: q.x - R.P.x,
+			y: q.y - R.P.y
+		},D = {
+			x: l(d.x * 4),
+			y: l(d.y * 4)
 		}
-		var pD = {
-			x: l(delta.x * 4),
-			y: l(delta.y * 4)
-		};
-		FTL.pC = {
-			x: c.x + pD.x,
-			y: c.y + pD.y
-		};
-		document.dispatchEvent(
-			new CustomEvent("precursormove", {
+		if (!d) d = {
+			x: 0,
+			y: 0
+		}
+
+		R.C = {
+			x: q.x + D.x,
+			y: q.y + D.y
+		}
+		R.O.dispatchEvent(
+			new R.V("precursormove", {
 				detail: {
-					x: FTL.pC.x,
-					y: FTL.pC.y
+					x: R.C.x,
+					y: R.C.y
 				}
 			})
-		);
-		FTL.hoverElement(FTL.pC);
-		FTL.lastPos = FTL.cp;
+		)
+		R.E(R.C)
+		R.P = R.j
 	},
-	hoverElement: pos => {
-		var el = document.elementFromPoint(~~pos.x, ~~pos.y);
-		if (FTL.fs && (!el || el != FTL.fs)) {
-			FTL.fs.classList.remove("prehover");
-			FTL.fs.dispatchEvent(
-				new CustomEvent(
+	E: s => {
+		var l = R.O.elementFromPoint(~~s.x, ~~s.y),Q={
+			bubbles: true,
+			cancellable: true
+		},B = A =[],n = R.f,r=k=>{return k.classList},v='prehover';
+		if (R.f && (!l || l != R.f)) {
+			r(R.f).remove(v)
+			R.f.dispatchEvent(
+				new R.V(
 					"erphover", //The foreseen hover ain't coming through
-					{
-						bubbles: true,
-						cancelable: true
-					}
+					Q
 				)
-			);
+			)
 		}
-		if (el && FTL.fs != el) {
-			var oAn = [];
-			var n = FTL.fs;
+		if (l && R.f != l) {
 			while (n) {
-				n = n.parentNode;
-				oAn.push(n);
-			}
-			var nAn = [];
-			n = el;
-			while (n) {
-				n = n.parentNode;
-				nAn.push(n);
-			}
-			for (var n of Array.from(oAn))
-				if (n && n.classList && nAn.indexOf(n) < 0)
-					n.classList.remove("prehover");
-			for (var n of Array.from(nAn))
-				if (n && n.classList && oAn.indexOf(n) < 0)
-					n.classList.add("prehover");
 
-			el.classList.add("prehover");
-			el.dispatchEvent(
-				new CustomEvent("prehover", {
-					bubbles: true,
-					cancelable: true
-				})
-			);
-			FTL.fs = el;
+				B.push(n = n.parentNode)
+			}
+			n = l
+			while (n) {
+
+				A.push(n = n.parentNode)
+			}
+			var m=Array.from
+			for (n of m(B))
+				if (n && r(n) && A.indexOf(n) < 0)
+					r(n).remove(v)
+			for (n of m(A))
+				if (n && r(n) && B.indexOf(n) < 0)
+					r(n).add(v)
+
+			r(l).add(v)
+			l.dispatchEvent(
+				new R.V(v, Q)
+			)
+			R.f = l
 		}
 	}
-};
-
-document.addEventListener("mousemove", FTL.moved);
+}
+R.j=R.P
+R.O.addEventListener("mousemove", R.M)
+FTL=R
+})()
