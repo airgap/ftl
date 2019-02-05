@@ -1,94 +1,89 @@
 (k=>{
-	var R={
-		O:document,
-		V:CustomEvent,
-	P: {
+	var m=Array.from, f,j=P = {
 		x: 0,
 		y: 0
-	},
-	M: e => {
+	},M=e => {
 		var c = {
 			x: e.clientX,
 			y: e.clientY
 		}
-		R.j = c
-		R.u()
+		j = c
+		u()
+	},l=v=>{
+		return Math.min(200, Math.max(-200, v))
 	},
-	u: k => {
-			//Keep the cursor from jumping super far away.
-			var l=v=>{
-				return Math.min(200, Math.max(-200, v))
-			};
+		O=document,
+		V=CustomEvent,
+		Y='dispatchEvent',
+		F='parentNode',
+		u= k => {
 
-		//deltas
-		var q = R.j,d = {
-			x: q.x - R.P.x,
-			y: q.y - R.P.y
-		},D = {
-			x: l(d.x * 4),
-			y: l(d.y * 4)
-		}
-		if (!d) d = {
-			x: 0,
-			y: 0
-		}
+			//deltas
+			//can technically minify more by making each x/y own object,
+			//but will drastically reduce readability
+			var q = j,d = {
+				x: q.x - P.x,
+				y: q.y - P.y
+			},D = {
+				x: l(d.x * 4),
+				y: l(d.y * 4)
+			}
+			if (!d) d = {
+				x: 0,
+				y: 0
+			}
 
-		R.C = {
-			x: q.x + D.x,
-			y: q.y + D.y
-		}
-		R.O.dispatchEvent(
-			new R.V("precursormove", {
-				detail: {
-					x: R.C.x,
-					y: R.C.y
-				}
-			})
-		)
-		R.E(R.C)
-		R.P = R.j
-	},
-	E: s => {
-		var l = R.O.elementFromPoint(~~s.x, ~~s.y),Q={
-			bubbles: true,
-			cancellable: true
-		},B = A =[],n = R.f,r=k=>{return k.classList},v='prehover';
-		if (R.f && (!l || l != R.f)) {
-			r(R.f).remove(v)
-			R.f.dispatchEvent(
-				new R.V(
+			C = {
+				x: q.x + D.x,
+				y: q.y + D.y
+			}
+			O[Y](
+				new V("precursormove", {
+					detail: {
+						x: C.x,
+						y: C.y
+					}
+				})
+			)
+			E(C)
+			P = j
+		},E= s => {
+		var l = O.elementFromPoint(~~s.x, ~~s.y),Q={
+			bubbles: 1,
+			cancellable: 1
+		},B = A =[],n = f,r='classList',v='prehover';
+		if (f && (!l || l != f)) {
+			f[r].remove(v)
+			f[Y](
+				new V(
 					"erphover", //The foreseen hover ain't coming through
 					Q
 				)
 			)
 		}
-		if (l && R.f != l) {
+		if (l && f != l) {
 			while (n) {
 
-				B.push(n = n.parentNode)
+				B.push(n = n[F])
 			}
 			n = l
 			while (n) {
 
-				A.push(n = n.parentNode)
+				A.push(n = n[F])
 			}
-			var m=Array.from
 			for (n of m(B))
-				if (n && r(n) && A.indexOf(n) < 0)
-					r(n).remove(v)
+				if (n && A.indexOf(n) < 0)
+					n[r].remove(v)
 			for (n of m(A))
-				if (n && r(n) && B.indexOf(n) < 0)
-					r(n).add(v)
+				if (n && B.indexOf(n) < 0)
+					n[r].add(v)
 
-			r(l).add(v)
-			l.dispatchEvent(
-				new R.V(v, Q)
+			l[r].add(v)
+			l[Y](
+				new V(v, Q)
 			)
-			R.f = l
+			f = l
 		}
-	}
-}
-R.j=R.P
-R.O.addEventListener("mousemove", R.M)
-FTL=R
+	};
+O.addEventListener("mousemove", M)
 })()
