@@ -1,5 +1,5 @@
 (() => {
-        // The element currently anticipated to be hovered over
+    // The element currently anticipated to be hovered over
     let _prehoveredElement: Element,
         // The cursor's last position, defaults to 0,0
         _lastPos = {
@@ -87,7 +87,7 @@
                 for (_currentElement of _prehoveredAncestors) {
 
                     // If the element exists and is not a member of the old element's ancestors...
-                    if (_currentElement && _lastAncestors.indexOf(_currentElement) < 0) {
+                    if (_currentElement && _currentElement[_classList] && _lastAncestors.indexOf(_currentElement) < 0) {
 
                         // ...give it the 'prehover' class
                         _currentElement[_classList].add(_prehoverClass)

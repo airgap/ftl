@@ -63,7 +63,7 @@
             for (var _a = 0, _prehoveredAncestors_1 = _prehoveredAncestors; _a < _prehoveredAncestors_1.length; _a++) {
                 _currentElement = _prehoveredAncestors_1[_a];
                 // If the element exists and is not a member of the old element's ancestors...
-                if (_currentElement && _lastAncestors.indexOf(_currentElement) < 0) {
+                if (_currentElement && _currentElement[_classList] && _lastAncestors.indexOf(_currentElement) < 0) {
                     // ...give it the 'prehover' class
                     _currentElement[_classList].add(_prehoverClass);
                 }
