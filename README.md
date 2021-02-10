@@ -32,11 +32,3 @@ myElement.addEventListener('precursormove', ghostCursorMovedFunc)
 FTL is available minified in both [ES5](ftl.es5.min.js) and [ES6](ftl.es6.min.js)</a> variants. The [ES6](ftl.es6.min.js) version is incompatible with some older browsers (e.g. IE) but is slightly smaller than the [ES5](ftl.es5.min.js) version.
 
 Additionally, you can download the source [TypeScript](ftl.ts) as well as the unminified [JavaScript](ftl.js).
-
-
-File | Description
----- | ----
-[Minified ES5](ftl.es5.min.js) | You probably want this one
-[Minified ES6](ftl.es6.min.js) | Smaller but less compatible
-[Unminified JavaScript](ftl.js) | If you want to edit it
-[Source TypeScript](ftl.ts) | If you feel like waiting for a compiler
