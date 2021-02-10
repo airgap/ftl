@@ -33,7 +33,6 @@ FTL is available minified in both [ES5](ftl.es5.min.js) and [ES6](ftl.es6.min.js
 
 Additionally, you can download the source [TypeScript](ftl.ts) as well as the unminified [JavaScript](ftl.js).
 
-So, to recap:
 
 File | Description
 ---- | ----
