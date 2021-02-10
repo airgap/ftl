@@ -1,15 +1,15 @@
 # FTL
 Hover events before they happen.
 
-## WHAT IT DOES
+## What it does
 
 FTL is a tiny JavaScript plugin that allows your website to respond to <code>:hover</code> events faster than normally possible. On default settings, FTL will make your site visibly snappier. Crank it up to eleven and watch as buttons <code>:hover</code> hundreds of pixels away from the cursor in the vague direction its headed.
 
-## HOW IT WORKS
+## How it works
 
 To figure out where your cursor is headed, FTL generates a precursor (aka the "ghost cursor") whereever it sees your mouse is headed. If this precursor hovers over an element, the <code>.prehover</code> class is added to the element.
 
-## HOW TO USE IT
+## How to use it
 
 At the core of FTL is the <code>.prehover</code> class. Anywhere you have <code>:hover</code> in your CSS, simply replace it with <code>.prehover</code> or append it to the existing CSS to have your element react to both selectors.
 
@@ -27,7 +27,7 @@ myElement.addEventListener('erphover', cancelledForsightFunc)
 myElement.addEventListener('precursormove', ghostCursorMovedFunc)
 ```
 
-## DOWNLOAD IT
+## Downloads
 
 FTL is available minified in both [ES5](ftl.es5.min.js) and [ES6](ftl.es6.min.js)</a> variants. The [ES6](ftl.es6.min.js) version is incompatible with some older browsers (e.g. IE) but is slightly smaller than the [ES5](ftl.es5.min.js) version.
 
