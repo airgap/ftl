@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/airgap/ftl#readme",
   "devDependencies": {
+    "rollup-plugin-uglify": "^6.0.4",
     "vite": "^5.2.11",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.6.0"

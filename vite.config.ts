@@ -1,6 +1,7 @@
 import { defineConfig } from "vitest/config";
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
+import { uglify } from "rollup-plugin-uglify";
 
 export default defineConfig({
   build: {
@@ -9,10 +10,10 @@ export default defineConfig({
       name: "FTL",
       fileName: "index",
     },
-    minify: "esbuild",
     rollupOptions: {
       output: {
         globals: {},
+        plugins: [uglify()],
       },
     },
   },

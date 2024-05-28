@@ -1,265 +1,490 @@
 <html>
-	<head>
-		<title>FTL</title>
-		<style>
-			body {
-				margin:0;
-				font-family: sans-serif;
-				font-weight: 100;
-				color: rgb(107, 51, 73);
-			}
-			#content {
-				width: 800px;
-				max-width:100%;
-				margin-left: auto;
-				margin-right: auto;
-				margin-bottom: 50px;
-			}
-			#ftl-logo svg {
-				margin-top: 100px;
-				height: auto;
-				margin-bottom: 100px;
-			}
-			#precursor {
-				left: -100px;
-				top: -100px;
-				width: 9px;
-				height: 18px;
-				background: rgba(0, 0, 0, .5);
-				position: fixed;
-				/*transition: .01s;*/
-				background: url(ftlcursor.svg);
-				background-repeat: no-repeat;
-				opacity: .5;
-				pointer-events: none;
-			}
-			#precursor.unmoving {
-				transform: scale(0);
-			}
-			h1 {
-				text-align: center;
-				font-weight: 100;
-				color: rgb(134, 51, 83);
-			}
-			.prehoverable {
-				transition: .1s;
-			}
-			.prehoverable:hover, .prehoverable.prehover {
-				color: hotpink;
-			}
-			pre {
-				padding: 10px;
-				margin: -10px;
-				background: #EEE;
-			}
-			pre.code {
-				white-space: normal !important;
-			}
-			pre.code code {
-			font-size: 1em;
-			word-break: break-all;
-			}
-			p > code {
-				background: #FDD;
-				padding: 0px 2px 0px 2px;
-				margin: 0px -2px 0px -2px;
-				display: inline-block;
-				border: 1px solid #FCC;
-				border-radius: 2px;
-				font-size: 1.2em;
-			}
-			pre code {
-				font-size: 1.4em;
-			}
-			.buttons {
-				text-align: center;
-			}
-			.buttons button {
-				border: 2px solid hotpink;
-				padding: 50px;
-				font-size: 1em;
-				transition: .25s;
-				margin: 50px;
-			}
-			.buttons button:hover, .buttons button.prehover {
-				background: hotpink;
-			}
-			.tile {
-				box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .25);
-				border: 1px solid rgba(0, 0, 0, .25);
-				margin-top: 20px;
-				padding: 10px;
-				border-radius: 10px;
-				overflow: hidden;
-			}
-		</style>
-		<script>
-		/*   FTL.MIN.JS   */
-
-        (()=>{var e,r,o=r={x:0,y:0},t=Math,s=t.pow,a=e=>t.min(200,t.max(-200,e)),d=document,v=(e,r,o)=>e.dispatchEvent(new CustomEvent(r,{detail:o})),n=()=>{var t={x:a(8*(o.x-r.x)),y:a(8*(o.y-r.y))},n={x:o.x+t.x,y:o.y+t.y,d:s(s(t.x,2)+s(t.y,2),.5)};v(d,"precursormove",{x:n.x,y:n.y,d:n.d}),(r=>{var o,t=d.elementFromPoint(r.x,r.y),s=o=[],a=e;if(!e||t&&t===e||(e.classList.remove("prehover"),v(e,"erphover")),t&&e!==t){for(;a;)s.push(a=a.parentNode);for(a=t;a;)o.push(a=a.parentNode);for(var n=0,x=s;n<x.length;n++)(a=x[n])&&o.indexOf(a)<0&&a.classList.remove("prehover");for(var i=0,p=o;i<p.length;i++)(a=p[i])&&s.indexOf(a)<0&&a.classList.add("prehover");t.classList.add("prehover"),v(t,"prehover",{d:r.d}),e=t}})(n),r=o};d.addEventListener("mousemove",e=>{o={x:e.clientX,y:e.clientY},n()})})();
-        //# sourceMappingURL=ftl.es6.min.js
-
-
-		/* / FTL.MIN.JS  */
-</script><script>
-			var precursor, moving;
-			window.addEventListener('load', () => {
-				precursor = document.getElementById('precursor');
-				document.addEventListener('precursormove', event => {
-					var pos = event.detail;
-					precursor.style.left = pos.x + "px";
-					precursor.style.top = pos.y + "px";
-					if(moving) clearTimeout(moving);
-					precursor.classList.remove('unmoving')
-					moving = setTimeout(stopMoving, 100);
-				})
-			})
-			function stopMoving() {
-				precursor.classList.add('unmoving')
-			}
-		</script>
-	</head>
-	<body>
-		<div id="precursor" class="unmoving"></div>
-		<div id="content">
-			<div id="ftl-logo">
-<svg width="100%" height="100%" viewBox="0 0 1176 322" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1,0,0,1,-103.855,-11971.7)">
-        <g transform="matrix(1.35605,0,0,1.35605,-2.55174,9789.48)">
-            <path d="M86.802,1761.31C86.802,1761.31 86.802,1693.73 86.802,1651.26C86.802,1632.67 101.866,1617.61 120.449,1617.61C186.575,1617.61 327.096,1617.61 327.096,1617.61" style="fill:none;stroke:rgb(255,70,113);stroke-width:16.67px;"/>
-        </g>
-        <g transform="matrix(0.986396,0,0,0.986396,29.535,10440.6)">
-            <path d="M327.096,1689.46L206.949,1689.46" style="fill:none;stroke:rgb(255,70,113);stroke-width:22.91px;"/>
-        </g>
-        <g transform="matrix(1.35605,0,0,1.35605,-2.55174,9789.48)">
-            <path d="M391.853,1617.61C391.853,1617.61 442.809,1617.61 478.352,1617.61C496.935,1617.61 512,1632.67 512,1651.26C512,1693.73 512,1761.31 512,1761.31C512,1761.31 512,1693.73 512,1651.26C512,1632.67 527.065,1617.61 545.648,1617.61C581.191,1617.61 632.147,1617.61 632.147,1617.61" style="fill:none;stroke:rgb(255,70,113);stroke-width:16.67px;"/>
-        </g>
-        <g transform="matrix(1.35605,0,0,1.35605,-2.55174,9789.48)">
-            <path d="M696.904,1617.61C696.904,1617.61 696.904,1685.19 696.904,1727.66C696.904,1746.24 711.969,1761.31 730.552,1761.31C796.677,1761.31 937.198,1761.31 937.198,1761.31" style="fill:none;stroke:rgb(255,70,113);stroke-width:16.67px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M86.802,5535.93L86.802,5464.34C86.802,5464.34 104.822,5464.34 119.273,5464.34C123.979,5464.34 128.493,5466.21 131.822,5469.53C135.15,5472.86 137.02,5477.38 137.02,5482.08C137.02,5482.18 137.02,5482.29 137.02,5482.39C137.02,5487.09 135.15,5491.61 131.822,5494.94C128.493,5498.26 123.979,5500.13 119.273,5500.13C115.135,5500.13 111.911,5500.13 111.911,5500.13L137.02,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M206.949,5464.34C206.949,5464.34 180.27,5464.34 165.804,5464.34C163.398,5464.34 161.09,5465.29 159.388,5466.99C157.687,5468.69 156.731,5471 156.731,5473.41C156.731,5487.16 156.731,5513.11 156.731,5526.86C156.731,5529.27 157.687,5531.57 159.388,5533.28C161.09,5534.98 163.398,5535.93 165.804,5535.93C180.27,5535.93 206.949,5535.93 206.949,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M181.84,5500.13L206.949,5500.13" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M226.66,5464.34L251.769,5535.93L276.878,5464.34" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M346.807,5464.34C346.807,5464.34 320.129,5464.34 305.662,5464.34C303.256,5464.34 300.948,5465.29 299.247,5466.99C297.545,5468.69 296.589,5471 296.589,5473.41C296.589,5487.16 296.589,5513.11 296.589,5526.86C296.589,5529.27 297.545,5531.57 299.247,5533.28C300.948,5534.98 303.256,5535.93 305.662,5535.93C320.129,5535.93 346.807,5535.93 346.807,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M346.807,5500.13L321.698,5500.13" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M366.519,5535.93L366.519,5464.34C366.519,5464.34 384.539,5464.34 398.99,5464.34C403.697,5464.34 408.211,5466.21 411.539,5469.53C414.867,5472.86 416.737,5477.38 416.737,5482.08C416.737,5482.18 416.737,5482.29 416.737,5482.39C416.737,5487.09 414.867,5491.61 411.539,5494.94C408.211,5498.26 403.697,5500.13 398.99,5500.13C394.852,5500.13 391.628,5500.13 391.628,5500.13L416.737,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M486.666,5464.34C486.666,5464.34 468.646,5464.34 454.195,5464.34C449.488,5464.34 444.974,5466.21 441.646,5469.53C438.318,5472.86 436.448,5477.38 436.448,5482.08C436.448,5482.18 436.448,5482.29 436.448,5482.39C436.448,5487.09 438.318,5491.61 441.646,5494.94C444.974,5498.26 449.488,5500.13 454.195,5500.13C458.973,5500.13 464.141,5500.13 468.919,5500.13C473.626,5500.13 478.14,5502 481.468,5505.33C484.796,5508.66 486.666,5513.17 486.666,5517.88C486.666,5517.98 486.666,5518.08 486.666,5518.19C486.666,5522.89 484.796,5527.41 481.468,5530.73C478.14,5534.06 473.626,5535.93 468.919,5535.93C454.468,5535.93 436.448,5535.93 436.448,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M556.595,5464.34C556.595,5464.34 529.917,5464.34 515.45,5464.34C513.044,5464.34 510.736,5465.29 509.035,5466.99C507.333,5468.69 506.377,5471 506.377,5473.41C506.377,5487.16 506.377,5513.11 506.377,5526.86C506.377,5529.27 507.333,5531.57 509.035,5533.28C510.736,5534.98 513.044,5535.93 515.45,5535.93C529.917,5535.93 556.595,5535.93 556.595,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M556.595,5500.13L531.486,5500.13" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(0.291039,0,0,0.291039,603.339,10654.9)">
-            <path d="M556.595,5500.13L531.486,5500.13" style="fill:none;stroke:rgb(255,70,113);stroke-width:14.32px;"/>
-        </g>
-        <g transform="matrix(0.291039,0,0,0.291039,813.127,10654.9)">
-            <path d="M556.595,5500.13L531.486,5500.13" style="fill:none;stroke:rgb(255,70,113);stroke-width:14.32px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M696.454,5464.34C696.454,5464.34 678.434,5464.34 663.983,5464.34C654.181,5464.34 646.236,5472.28 646.236,5482.08C646.236,5493.09 646.236,5507.18 646.236,5518.19C646.236,5527.99 654.181,5535.93 663.983,5535.93C678.434,5535.93 696.454,5535.93 696.454,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M716.165,5535.93C716.165,5535.93 716.165,5510.08 716.165,5489.44C716.165,5475.58 727.406,5464.34 741.273,5464.34C741.274,5464.34 741.274,5464.34 741.275,5464.34C755.142,5464.34 766.383,5475.58 766.383,5489.44C766.383,5510.08 766.383,5535.93 766.383,5535.93" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,6755.5)">
-            <path d="M786.094,5464.34C786.094,5464.34 786.094,5490.19 786.094,5510.82C786.094,5524.69 797.336,5535.93 811.202,5535.93C811.203,5535.93 811.204,5535.93 811.204,5535.93C825.071,5535.93 836.312,5524.69 836.312,5510.82C836.312,5490.19 836.312,5464.34 836.312,5464.34" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,5780.38)">
-            <path d="M906.242,6439.46C906.242,6439.46 888.222,6439.46 873.771,6439.46C869.064,6439.46 864.55,6441.33 861.222,6444.65C857.893,6447.98 856.024,6452.5 856.024,6457.2C856.024,6457.31 856.024,6457.41 856.024,6457.51C856.024,6462.22 857.893,6466.73 861.222,6470.06C864.55,6473.39 869.064,6475.26 873.771,6475.26C878.549,6475.26 883.717,6475.26 888.495,6475.26C893.201,6475.26 897.715,6477.12 901.044,6480.45C904.372,6483.78 906.242,6488.3 906.242,6493C906.242,6493.1 906.242,6493.2 906.242,6493.31C906.242,6498.01 904.372,6502.53 901.044,6505.86C897.715,6509.18 893.201,6511.05 888.495,6511.05C874.044,6511.05 856.024,6511.05 856.024,6511.05" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,5780.38)">
-            <path d="M925.953,6511.05C925.953,6511.05 925.953,6485.2 925.953,6464.57C925.953,6450.7 937.194,6439.46 951.061,6439.46C951.062,6439.46 951.062,6439.46 951.063,6439.46C964.93,6439.46 976.171,6450.7 976.171,6464.57C976.171,6485.2 976.171,6511.05 976.171,6511.05" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,5780.38)">
-            <path d="M995.882,6439.46C995.882,6439.46 995.882,6482.71 995.882,6501.98C995.882,6504.39 996.838,6506.69 998.54,6508.4C1000.24,6510.1 1002.55,6511.05 1004.96,6511.05C1019.42,6511.05 1046.1,6511.05 1046.1,6511.05" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,5780.38)">
-            <path d="M1065.81,6439.46C1065.81,6439.46 1074.66,6439.46 1081.85,6439.46C1084.25,6439.46 1086.56,6440.41 1088.26,6442.11C1089.96,6443.82 1090.92,6446.12 1090.92,6448.53C1090.92,6462.28 1090.92,6488.23 1090.92,6501.98C1090.92,6504.39 1089.96,6506.69 1088.26,6508.4C1086.56,6510.1 1084.25,6511.05 1081.85,6511.05C1074.66,6511.05 1065.81,6511.05 1065.81,6511.05" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,5780.38)">
-            <path d="M1116.03,6511.05C1116.03,6511.05 1107.18,6511.05 1099.99,6511.05C1097.59,6511.05 1095.28,6510.1 1093.58,6508.4C1091.88,6506.69 1090.92,6504.39 1090.92,6501.98C1090.92,6488.23 1090.92,6462.28 1090.92,6448.53C1090.92,6446.12 1091.88,6443.82 1093.58,6442.11C1095.28,6440.41 1097.59,6439.46 1099.99,6439.46C1107.18,6439.46 1116.03,6439.46 1116.03,6439.46" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,5780.38)">
-            <path d="M1135.74,6439.46C1135.74,6439.46 1144.59,6439.46 1151.78,6439.46C1154.18,6439.46 1156.49,6440.41 1158.19,6442.11C1159.89,6443.82 1160.85,6446.12 1160.85,6448.53C1160.85,6467.8 1160.85,6511.05 1160.85,6511.05C1160.85,6511.05 1160.85,6467.8 1160.85,6448.53C1160.85,6446.12 1161.81,6443.82 1163.51,6442.11C1165.21,6440.41 1167.52,6439.46 1169.92,6439.46C1177.11,6439.46 1185.96,6439.46 1185.96,6439.46" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,20.4019,5780.38)">
-            <path d="M1205.67,6439.46C1205.67,6439.46 1213.95,6447.74 1221,6454.79C1227.26,6461.05 1230.78,6469.54 1230.78,6478.39C1230.78,6492.1 1230.78,6511.05 1230.78,6511.05C1230.78,6511.05 1230.78,6492.1 1230.78,6478.39C1230.78,6469.54 1234.3,6461.05 1240.56,6454.79C1247.61,6447.74 1255.89,6439.46 1255.89,6439.46" style="fill:none;stroke:rgb(255,70,113);stroke-width:4.17px;"/>
-        </g>
-    </g>
-</svg>
-
-
-			</div>
-			<div class="tile">
-				<h1>WHAT IT DOES</H1>
-				<p>
-					FTL is a tiny JavaScript plugin that allows your website to respond to <code>:hover</code> events faster than normally possible. On default settings, FTL will make your site visibly snappier. Crank it up to eleven and watch as buttons <code>:hover</code> hundreds of pixels away from the cursor in the vague direction its headed.
-				</p>
-			</div>
-			<div class="tile">
-				<h1>HOW IT WORKS</H1>
-				<p>
-					To figure out where your cursor is headed, FTL generates a precursor (aka the "ghost cursor") whereever it sees your mouse is headed. If this precursor hovers over an element, the <code>.prehover</code> class is added to the element. The cursor shown on this page is for demonstrative purposes only and is not part of the plugin.
-				</p>
-			</div>
-			<div class="tile">
-				<h1>HOW TO USE IT</H1>
-				<p>
-					At the core of FTL is the <code>.prehover</code> class. Anywhere you have <code>:hover</code> in your CSS, simply replace it with <code>.prehover</code> or append it to the existing CSS to have your element react to both selectors.
-				</p>
-				<pre class="prehoverable"><code>
+  <head>
+    <title>FTL</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        font-weight: 100;
+        color: rgb(107, 51, 73);
+      }
+      #content {
+        width: 800px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+      }
+      #ftl-logo svg {
+        margin-top: 100px;
+        height: auto;
+        margin-bottom: 100px;
+      }
+      #precursor {
+        left: -100px;
+        top: -100px;
+        width: 9px;
+        height: 18px;
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        /*transition: .01s;*/
+        background: url(ftlcursor.svg);
+        background-repeat: no-repeat;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      #precursor.unmoving {
+        transform: scale(0);
+      }
+      h1 {
+        text-align: center;
+        font-weight: 100;
+        color: rgb(134, 51, 83);
+      }
+      .prehoverable {
+        transition: 0.1s;
+      }
+      .prehoverable:hover,
+      .prehoverable.prehover {
+        color: hotpink;
+      }
+      pre {
+        padding: 10px;
+        margin: -10px;
+        background: #eee;
+      }
+      pre.code {
+        white-space: normal !important;
+      }
+      pre.code code {
+        font-size: 1em;
+        word-break: break-all;
+      }
+      p > code {
+        background: #fdd;
+        padding: 0px 2px 0px 2px;
+        margin: 0px -2px 0px -2px;
+        display: inline-block;
+        border: 1px solid #fcc;
+        border-radius: 2px;
+        font-size: 1.2em;
+      }
+      pre code {
+        font-size: 1.4em;
+      }
+      .buttons {
+        text-align: center;
+      }
+      .buttons button {
+        border: 2px solid hotpink;
+        padding: 50px;
+        font-size: 1em;
+        transition: 0.25s;
+        margin: 50px;
+      }
+      .buttons button:hover,
+      .buttons button.prehover {
+        background: hotpink;
+      }
+      .tile {
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+    </style>
+    <script>
+      const c = (e) => Math.min(200, Math.max(-200, e)),
+        n = { lastPos: { x: 0, y: 0 } },
+        d = (e, n, t) => e.dispatchEvent(new CustomEvent(n, { detail: t })),
+        a = "prehover",
+        m = "erphover",
+        h = (e) => {
+          var t = document.elementFromPoint(e.x, e.y),
+            o = [],
+            r = [];
+          let s = n.prehoveredElement;
+          if (
+            (!n.prehoveredElement ||
+              (t && t === n.prehoveredElement) ||
+              (n.prehoveredElement.classList.remove(a),
+              d(n.prehoveredElement, m)),
+            t && n.prehoveredElement !== t && s)
+          ) {
+            for (; s.parentNode; ) r.push((s = s.parentNode));
+            for (s = t; s.parentNode; ) o.push((s = s.parentNode));
+            for (s of r)
+              s instanceof Element && o.includes(s) && s.classList.remove(a);
+            for (const l of o)
+              l instanceof Element && r.indexOf(l) < 0 && l.classList.add(a);
+            t.classList.add(a), d(t, a, e), (n.prehoveredElement = t);
+          }
+        },
+        i = (e, t) => {
+          var o = c(4 * (e - n.lastPos.x)),
+            r = c(4 * (t - n.lastPos.y)),
+            o = {
+              x: e + o,
+              y: t + r,
+              d: Math.pow(Math.pow(o, 2) + Math.pow(r, 2), 0.5),
+            };
+          d(document, "precursormove", o), h(o), (n.lastPos = { x: e, y: t });
+        };
+      document.addEventListener("mousemove", ({ clientX: e, clientY: n }) =>
+        i(e, n),
+      );
+    </script>
+  </head>
+  <body>
+    <div id="precursor" class="unmoving"></div>
+    <div id="content">
+      <div id="ftl-logo">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1176 322"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:space="preserve"
+          xmlns:serif="http://www.serif.com/"
+          style="
+            fill-rule: evenodd;
+            clip-rule: evenodd;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-miterlimit: 1.5;
+          "
+        >
+          <g transform="matrix(1,0,0,1,-103.855,-11971.7)">
+            <g transform="matrix(1.35605,0,0,1.35605,-2.55174,9789.48)">
+              <path
+                d="M86.802,1761.31C86.802,1761.31 86.802,1693.73 86.802,1651.26C86.802,1632.67 101.866,1617.61 120.449,1617.61C186.575,1617.61 327.096,1617.61 327.096,1617.61"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 16.67px;
+                "
+              />
+            </g>
+            <g transform="matrix(0.986396,0,0,0.986396,29.535,10440.6)">
+              <path
+                d="M327.096,1689.46L206.949,1689.46"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 22.91px;
+                "
+              />
+            </g>
+            <g transform="matrix(1.35605,0,0,1.35605,-2.55174,9789.48)">
+              <path
+                d="M391.853,1617.61C391.853,1617.61 442.809,1617.61 478.352,1617.61C496.935,1617.61 512,1632.67 512,1651.26C512,1693.73 512,1761.31 512,1761.31C512,1761.31 512,1693.73 512,1651.26C512,1632.67 527.065,1617.61 545.648,1617.61C581.191,1617.61 632.147,1617.61 632.147,1617.61"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 16.67px;
+                "
+              />
+            </g>
+            <g transform="matrix(1.35605,0,0,1.35605,-2.55174,9789.48)">
+              <path
+                d="M696.904,1617.61C696.904,1617.61 696.904,1685.19 696.904,1727.66C696.904,1746.24 711.969,1761.31 730.552,1761.31C796.677,1761.31 937.198,1761.31 937.198,1761.31"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 16.67px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M86.802,5535.93L86.802,5464.34C86.802,5464.34 104.822,5464.34 119.273,5464.34C123.979,5464.34 128.493,5466.21 131.822,5469.53C135.15,5472.86 137.02,5477.38 137.02,5482.08C137.02,5482.18 137.02,5482.29 137.02,5482.39C137.02,5487.09 135.15,5491.61 131.822,5494.94C128.493,5498.26 123.979,5500.13 119.273,5500.13C115.135,5500.13 111.911,5500.13 111.911,5500.13L137.02,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M206.949,5464.34C206.949,5464.34 180.27,5464.34 165.804,5464.34C163.398,5464.34 161.09,5465.29 159.388,5466.99C157.687,5468.69 156.731,5471 156.731,5473.41C156.731,5487.16 156.731,5513.11 156.731,5526.86C156.731,5529.27 157.687,5531.57 159.388,5533.28C161.09,5534.98 163.398,5535.93 165.804,5535.93C180.27,5535.93 206.949,5535.93 206.949,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M181.84,5500.13L206.949,5500.13"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M226.66,5464.34L251.769,5535.93L276.878,5464.34"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M346.807,5464.34C346.807,5464.34 320.129,5464.34 305.662,5464.34C303.256,5464.34 300.948,5465.29 299.247,5466.99C297.545,5468.69 296.589,5471 296.589,5473.41C296.589,5487.16 296.589,5513.11 296.589,5526.86C296.589,5529.27 297.545,5531.57 299.247,5533.28C300.948,5534.98 303.256,5535.93 305.662,5535.93C320.129,5535.93 346.807,5535.93 346.807,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M346.807,5500.13L321.698,5500.13"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M366.519,5535.93L366.519,5464.34C366.519,5464.34 384.539,5464.34 398.99,5464.34C403.697,5464.34 408.211,5466.21 411.539,5469.53C414.867,5472.86 416.737,5477.38 416.737,5482.08C416.737,5482.18 416.737,5482.29 416.737,5482.39C416.737,5487.09 414.867,5491.61 411.539,5494.94C408.211,5498.26 403.697,5500.13 398.99,5500.13C394.852,5500.13 391.628,5500.13 391.628,5500.13L416.737,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M486.666,5464.34C486.666,5464.34 468.646,5464.34 454.195,5464.34C449.488,5464.34 444.974,5466.21 441.646,5469.53C438.318,5472.86 436.448,5477.38 436.448,5482.08C436.448,5482.18 436.448,5482.29 436.448,5482.39C436.448,5487.09 438.318,5491.61 441.646,5494.94C444.974,5498.26 449.488,5500.13 454.195,5500.13C458.973,5500.13 464.141,5500.13 468.919,5500.13C473.626,5500.13 478.14,5502 481.468,5505.33C484.796,5508.66 486.666,5513.17 486.666,5517.88C486.666,5517.98 486.666,5518.08 486.666,5518.19C486.666,5522.89 484.796,5527.41 481.468,5530.73C478.14,5534.06 473.626,5535.93 468.919,5535.93C454.468,5535.93 436.448,5535.93 436.448,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M556.595,5464.34C556.595,5464.34 529.917,5464.34 515.45,5464.34C513.044,5464.34 510.736,5465.29 509.035,5466.99C507.333,5468.69 506.377,5471 506.377,5473.41C506.377,5487.16 506.377,5513.11 506.377,5526.86C506.377,5529.27 507.333,5531.57 509.035,5533.28C510.736,5534.98 513.044,5535.93 515.45,5535.93C529.917,5535.93 556.595,5535.93 556.595,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M556.595,5500.13L531.486,5500.13"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(0.291039,0,0,0.291039,603.339,10654.9)">
+              <path
+                d="M556.595,5500.13L531.486,5500.13"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 14.32px;
+                "
+              />
+            </g>
+            <g transform="matrix(0.291039,0,0,0.291039,813.127,10654.9)">
+              <path
+                d="M556.595,5500.13L531.486,5500.13"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 14.32px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M696.454,5464.34C696.454,5464.34 678.434,5464.34 663.983,5464.34C654.181,5464.34 646.236,5472.28 646.236,5482.08C646.236,5493.09 646.236,5507.18 646.236,5518.19C646.236,5527.99 654.181,5535.93 663.983,5535.93C678.434,5535.93 696.454,5535.93 696.454,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M716.165,5535.93C716.165,5535.93 716.165,5510.08 716.165,5489.44C716.165,5475.58 727.406,5464.34 741.273,5464.34C741.274,5464.34 741.274,5464.34 741.275,5464.34C755.142,5464.34 766.383,5475.58 766.383,5489.44C766.383,5510.08 766.383,5535.93 766.383,5535.93"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,6755.5)">
+              <path
+                d="M786.094,5464.34C786.094,5464.34 786.094,5490.19 786.094,5510.82C786.094,5524.69 797.336,5535.93 811.202,5535.93C811.203,5535.93 811.204,5535.93 811.204,5535.93C825.071,5535.93 836.312,5524.69 836.312,5510.82C836.312,5490.19 836.312,5464.34 836.312,5464.34"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,5780.38)">
+              <path
+                d="M906.242,6439.46C906.242,6439.46 888.222,6439.46 873.771,6439.46C869.064,6439.46 864.55,6441.33 861.222,6444.65C857.893,6447.98 856.024,6452.5 856.024,6457.2C856.024,6457.31 856.024,6457.41 856.024,6457.51C856.024,6462.22 857.893,6466.73 861.222,6470.06C864.55,6473.39 869.064,6475.26 873.771,6475.26C878.549,6475.26 883.717,6475.26 888.495,6475.26C893.201,6475.26 897.715,6477.12 901.044,6480.45C904.372,6483.78 906.242,6488.3 906.242,6493C906.242,6493.1 906.242,6493.2 906.242,6493.31C906.242,6498.01 904.372,6502.53 901.044,6505.86C897.715,6509.18 893.201,6511.05 888.495,6511.05C874.044,6511.05 856.024,6511.05 856.024,6511.05"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,5780.38)">
+              <path
+                d="M925.953,6511.05C925.953,6511.05 925.953,6485.2 925.953,6464.57C925.953,6450.7 937.194,6439.46 951.061,6439.46C951.062,6439.46 951.062,6439.46 951.063,6439.46C964.93,6439.46 976.171,6450.7 976.171,6464.57C976.171,6485.2 976.171,6511.05 976.171,6511.05"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,5780.38)">
+              <path
+                d="M995.882,6439.46C995.882,6439.46 995.882,6482.71 995.882,6501.98C995.882,6504.39 996.838,6506.69 998.54,6508.4C1000.24,6510.1 1002.55,6511.05 1004.96,6511.05C1019.42,6511.05 1046.1,6511.05 1046.1,6511.05"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,5780.38)">
+              <path
+                d="M1065.81,6439.46C1065.81,6439.46 1074.66,6439.46 1081.85,6439.46C1084.25,6439.46 1086.56,6440.41 1088.26,6442.11C1089.96,6443.82 1090.92,6446.12 1090.92,6448.53C1090.92,6462.28 1090.92,6488.23 1090.92,6501.98C1090.92,6504.39 1089.96,6506.69 1088.26,6508.4C1086.56,6510.1 1084.25,6511.05 1081.85,6511.05C1074.66,6511.05 1065.81,6511.05 1065.81,6511.05"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,5780.38)">
+              <path
+                d="M1116.03,6511.05C1116.03,6511.05 1107.18,6511.05 1099.99,6511.05C1097.59,6511.05 1095.28,6510.1 1093.58,6508.4C1091.88,6506.69 1090.92,6504.39 1090.92,6501.98C1090.92,6488.23 1090.92,6462.28 1090.92,6448.53C1090.92,6446.12 1091.88,6443.82 1093.58,6442.11C1095.28,6440.41 1097.59,6439.46 1099.99,6439.46C1107.18,6439.46 1116.03,6439.46 1116.03,6439.46"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,5780.38)">
+              <path
+                d="M1135.74,6439.46C1135.74,6439.46 1144.59,6439.46 1151.78,6439.46C1154.18,6439.46 1156.49,6440.41 1158.19,6442.11C1159.89,6443.82 1160.85,6446.12 1160.85,6448.53C1160.85,6467.8 1160.85,6511.05 1160.85,6511.05C1160.85,6511.05 1160.85,6467.8 1160.85,6448.53C1160.85,6446.12 1161.81,6443.82 1163.51,6442.11C1165.21,6440.41 1167.52,6439.46 1169.92,6439.46C1177.11,6439.46 1185.96,6439.46 1185.96,6439.46"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,20.4019,5780.38)">
+              <path
+                d="M1205.67,6439.46C1205.67,6439.46 1213.95,6447.74 1221,6454.79C1227.26,6461.05 1230.78,6469.54 1230.78,6478.39C1230.78,6492.1 1230.78,6511.05 1230.78,6511.05C1230.78,6511.05 1230.78,6492.1 1230.78,6478.39C1230.78,6469.54 1234.3,6461.05 1240.56,6454.79C1247.61,6447.74 1255.89,6439.46 1255.89,6439.46"
+                style="
+                  fill: none;
+                  stroke: rgb(255, 70, 113);
+                  stroke-width: 4.17px;
+                "
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="tile">
+        <h1>WHAT IT DOES</h1>
+        <p>
+          FTL is a tiny JavaScript plugin that allows your website to respond to
+          <code>:hover</code> events faster than normally possible. On default
+          settings, FTL will make your site visibly snappier. Crank it up to
+          eleven and watch as buttons <code>:hover</code> hundreds of pixels
+          away from the cursor in the vague direction its headed.
+        </p>
+      </div>
+      <div class="tile">
+        <h1>HOW IT WORKS</h1>
+        <p>
+          To figure out where your cursor is headed, FTL generates a precursor
+          (aka the "ghost cursor") whereever it sees your mouse is headed. If
+          this precursor hovers over an element, the
+          <code>.prehover</code> class is added to the element. The cursor shown
+          on this page is for demonstrative purposes only and is not part of the
+          plugin.
+        </p>
+      </div>
+      <div class="tile">
+        <h1>HOW TO USE IT</h1>
+        <p>
+          At the core of FTL is the <code>.prehover</code> class. Anywhere you
+          have <code>:hover</code> in your CSS, simply replace it with
+          <code>.prehover</code> or append it to the existing CSS to have your
+          element react to both selectors.
+        </p>
+        <pre class="prehoverable"><code>
 a:hover, a.prehover {
 	background: hotpink;
 }
 				</code></pre>
-				<p>
-						FTL also fires JavaScript events when a hover event is foreseen. Listen for the <code>prehover</code> event for foreseen hovers, <code>erphover</code> for cancelled foresights, and <code>precursormove</code> to track the ghost cursor's position.
-				</p>
-				<pre><code>
+        <p>
+          FTL also fires JavaScript events when a hover event is foreseen.
+          Listen for the <code>prehover</code> event for foreseen hovers,
+          <code>erphover</code> for cancelled foresights, and
+          <code>precursormove</code> to track the ghost cursor's position.
+        </p>
+        <pre><code>
 myElement.addEventListener('prehover', foreseenHoverFunc)
 myElement.addEventListener('erphover', cancelledForsightFunc)
 myElement.addEventListener('precursormove', ghostCursorMovedFunc)
 				</code></pre>
-			</div>
-			<div class="tile">
-                <strike><h1>DOWNLOAD IT</h1>
-				<p>Download <a target="_blank" href="https://github.com/airgap/ftl/blob/master/ftl.es5.min.js">this file</a> or copy this code into your <code>script</code> tag:</p>
-				<pre class="code"><code>!function(){var e,r,n=r={x:0,y:0},o=Math,t=o.pow,i=function(e){return o.min(200,o.max(-200,e))},s=document,a=function(e,r,n){return e.dispatchEvent(new CustomEvent(r,{detail:n}))},d=function(){var o={x:i(8*(n.x-r.x)),y:i(8*(n.y-r.y))},d={x:n.x+o.x,y:n.y+o.y,d:t(t(o.x,2)+t(o.y,2),.5)};a(s,"precursormove",{x:d.x,y:d.y,d:d.d}),function(r){var n,o=s.elementFromPoint(r.x,r.y),t=n=[],i=e;if(!e||o&&o===e||(e.classList.remove("prehover"),a(e,"erphover")),o&&e!==o){for(;i;)t.push(i=i.parentNode);for(i=o;i;)n.push(i=i.parentNode);for(var d=0,v=t;d<v.length;d++)(i=v[d])&&n.indexOf(i)<0&&i.classList.remove("prehover");for(var c=0,x=n;c<x.length;c++)(i=x[c])&&t.indexOf(i)<0&&i.classList.add("prehover");o.classList.add("prehover"),a(o,"prehover",{d:r.d}),e=o}}(d),r=n};s.addEventListener("mousemove",function(e){n={x:e.clientX,y:e.clientY},d()})}();</code></pre>
-                    <p>It's recommended you paste the code itself into your website's `<head>` as it saves you from one more server request and FTL is only 722 bytes long.</p></strike>
-			</div>
-			<div class="tile">
-				<h1>TRY IT OUT</H1>
-				<p>
-					Here are some random buttons. Try hovering over them.
-				</p>
-				<div class="buttons">
-					<button>Button</button>
-						<button>Button</button>
-							<button>Button</button>
-								<button>Button</button>
-									<button>Button</button>
-										<button>Button</button>
-				</div>
-			</div>
-		</div>
-	</body>
+      </div>
+      <div class="tile">
+        <h1>INSTALL IT</h1>
+        <pre><code>npm i ftl.rocks</code></pre>
+      </div>
+      <div class="tile">
+        <h1>TRY IT OUT</h1>
+        <p>Here are some random buttons. Try hovering over them.</p>
+        <div class="buttons">
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+          <button>Button</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
 <!-- The L stands for Ligma -->
