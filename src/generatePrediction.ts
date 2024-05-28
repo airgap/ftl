@@ -3,13 +3,13 @@ import { state } from "./state";
 import { dispatchEventOnElement } from "./dispatchEventOnElement";
 import { Point3D } from "./Point3D";
 import { analyzePrediction } from "./analyzePrediction";
-
+const m = 8
 // Generate a predicted hover location based on the mouse's current and last positions
 export const generatePrediction = (x: number, y: number) => {
-  const // Subtract the old X and Y coords from the new X and Y coords and multiply the result by 4
+  const // Subtract the old X and Y coords from the new X and Y coords and multiply the result by m
     // to get the relative position of the foreseen location from the current cursor location
-    dx = lock200((x - state.lastPos.x) * 4),
-    dy = lock200((y - state.lastPos.y) * 4),
+    dx = lock200((x - state.lastPos.x) * m),
+    dy = lock200((y - state.lastPos.y) * m),
     // Add the relative foreseen location to the current absolute location to get the absolute
     // foreseen mouse location
     predictionPos = {
