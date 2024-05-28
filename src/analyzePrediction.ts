@@ -32,18 +32,15 @@ export const analyzePrediction = (prediction: Point3D) => {
 
   // if (the new foreseen element exists) and is not equal to the last foreseen element
   if (
-    !(
-      elementAtPoint &&
-      state.prehoveredElement !== elementAtPoint &&
-      currentElement
-    )
-  )
-    return;
-
-  // Push each ancestor of the last foreseen element to an array
-  while (currentElement.parentNode)
-    lastAncestors.push((currentElement = currentElement.parentNode));
-
+    elementAtPoint &&
+    state.prehoveredElement !== elementAtPoint &&
+    currentElement
+  ) {
+    // Push each ancestor of the last foreseen element to an array
+    while (currentElement.parentNode)
+      lastAncestors.push((currentElement = currentElement.parentNode));
+  }
+  if (!elementAtPoint) return;
   // Now focus on the new foreseen element
   currentElement = elementAtPoint;
 

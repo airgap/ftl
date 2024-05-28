@@ -5,6 +5,7 @@ type State = {
 
   // The cursor's last position, defaults to 0,0
   lastPos: Point2D;
+  lastTime?: number;
 };
 export const state: State = {
   lastPos: {

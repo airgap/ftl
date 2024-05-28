@@ -112,8 +112,9 @@
               (n.prehoveredElement.classList.remove(a),
               d(n.prehoveredElement, m)),
             t && n.prehoveredElement !== t && s)
-          ) {
+          )
             for (; s.parentNode; ) r.push((s = s.parentNode));
+          if (t) {
             for (s = t; s.parentNode; ) o.push((s = s.parentNode));
             for (s of r)
               s instanceof Element && o.includes(s) && s.classList.remove(a);
