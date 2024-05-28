@@ -83,7 +83,7 @@
         margin: 50px;
       }
       .buttons button:hover,
-      .buttons button.prehover {
+      .buttons button:not(.noboost).prehover {
         background: hotpink;
       }
       .tile {
@@ -477,12 +477,12 @@ myElement.addEventListener('precursormove', ghostCursorMovedFunc)
         <h1>TRY IT OUT</h1>
         <p>Here are some random buttons. Try hovering over them.</p>
         <div class="buttons">
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
-          <button>Button</button>
+          <button class="noboost">No FTL</button>
+          <button class="noboost">No FTL</button>
+          <button class="noboost">No FTL</button>
+          <button>Boosted</button>
+          <button>Boosted</button>
+          <button>Boosted</button>
         </div>
       </div>
     </div>
