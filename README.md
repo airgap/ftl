@@ -4,15 +4,15 @@ Hover events before they happen.
 
 ## What it does
 
-FTL is a tiny JavaScript plugin that allows your website to respond to <code>:hover</code> events faster than normally possible. On default settings, FTL will make your site visibly snappier. Crank it up to eleven and watch as buttons <code>:hover</code> hundreds of pixels away from the cursor in the vague direction its headed.
+FTL is a tiny JavaScript plugin that allows your website to respond to `:hover` events faster than normally possible. On default settings, FTL will make your site visibly snappier. Crank it up to eleven and watch as buttons `:hover` hundreds of pixels away from the cursor in the vague direction it's headed.
 
 ## How it works
 
-To figure out where your cursor is headed, FTL generates a precursor (aka the "ghost cursor") whereever it sees your mouse is headed. If this precursor hovers over an element, the <code>.prehover</code> class is added to the element.
+To figure out where your cursor is headed, FTL generates a precursor (aka the "ghost cursor") whereever it sees your mouse is headed. If this precursor hovers over an element, the `.prehover` class is added to the element.
 
 ## How to use it
 
-At the core of FTL is the <code>.prehover</code> class. Anywhere you have <code>:hover</code> in your CSS, simply replace it with <code>.prehover</code> or append it to the existing CSS to have your element react to both selectors.
+At the core of FTL is the `.prehover` class. Anywhere you have `:hover` in your CSS, simply replace it with `.prehover` or append it to the existing CSS to have your element react to both selectors.
 
 ```CSS
 a:hover, a.prehover {
@@ -20,16 +20,10 @@ a:hover, a.prehover {
 }
 ```
 
-FTL also fires JavaScript events when a hover event is foreseen. Listen for the <code>prehover</code> event for foreseen hovers, <code>erphover</code> for cancelled foresights, and <code>precursormove</code> to track the ghost cursor's position.
+FTL also fires JavaScript events when a hover event is foreseen. Listen for the `prehover` event for foreseen hovers, `erphover<` for cancelled foresights, and `precursormove` to track the ghost cursor's position.
 
 ```JavaScript
 myElement.addEventListener('prehover', foreseenHoverFunc)
 myElement.addEventListener('erphover', cancelledForsightFunc)
 myElement.addEventListener('precursormove', ghostCursorMovedFunc)
 ```
-
-## Downloads
-
-FTL is available minified in both [ES5](ftl.es5.min.js) and [ES6](ftl.es6.min.js)</a> variants. The [ES6](ftl.es6.min.js) version is incompatible with some older browsers (e.g. IE) but is slightly smaller than the [ES5](ftl.es5.min.js) version.
-
-Additionally, you can download the source [TypeScript](src/index.ts) as well as the unminified [JavaScript](ftl.js).
