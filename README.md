@@ -1,4 +1,5 @@
 # FTL
+
 Hover events before they happen.
 
 ## What it does
@@ -31,4 +32,4 @@ myElement.addEventListener('precursormove', ghostCursorMovedFunc)
 
 FTL is available minified in both [ES5](ftl.es5.min.js) and [ES6](ftl.es6.min.js)</a> variants. The [ES6](ftl.es6.min.js) version is incompatible with some older browsers (e.g. IE) but is slightly smaller than the [ES5](ftl.es5.min.js) version.
 
-Additionally, you can download the source [TypeScript](ftl.ts) as well as the unminified [JavaScript](ftl.js).
+Additionally, you can download the source [TypeScript](src/index.ts) as well as the unminified [JavaScript](ftl.js).
