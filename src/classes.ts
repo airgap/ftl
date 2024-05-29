@@ -1,2 +1,2 @@
-export const prehoverClass = "prehover",
-  unhoverClass = "erphover";
+export const prehoverClass = 'prehover';
+export const unhoverClass = 'erphover';

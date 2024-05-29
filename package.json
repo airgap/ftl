@@ -10,7 +10,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build",
-    "clean": "rm -rf dist node_modules"
+    "clean": "rm -rf dist node_modules",
+    "lint": "xo src",
+    "format": "xo src --fix"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,24 @@
     "serialize-javascript": "^6.0.2",
     "vite": "^5.2.11",
     "vite-plugin-dts": "^3.9.1",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.0",
+    "xo": "^0.58.0"
+  },
+  "xo": {
+    "rules": {
+      "unicorn/filename-case": [
+        "error",
+        {
+          "cases": {
+            "camelCase": true,
+            "pascalCase": true
+          },
+          "ignore": [
+            "Dockerfile"
+          ]
+        }
+      ],
+      "import/extensions": "off"
+    }
   }
 }
