@@ -24,6 +24,8 @@ FTL also fires JavaScript events when a hover event is foreseen. Listen for the 
 
 ```JavaScript
 myElement.addEventListener('prehover', foreseenHoverFunc)
-myElement.addEventListener('erphover', cancelledForsightFunc)
+myElement.addEventListener('erphover', cancelledForesightFunc)
 myElement.addEventListener('precursormove', ghostCursorMovedFunc)
 ```
+
+Fun fact: FTL was originally called [Precog](https://youtu.be/7bBpLjKtq74)
