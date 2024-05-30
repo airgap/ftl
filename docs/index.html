@@ -2,6 +2,9 @@
   <head>
     <title>FTL</title>
     <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
       body {
         margin: 0;
         font-family: sans-serif;
@@ -41,17 +44,12 @@
         font-weight: 100;
         color: rgb(134, 51, 83);
       }
-      .prehoverable {
-        transition: 0.1s;
-      }
-      .prehoverable:hover,
-      .prehoverable.prehover {
-        color: hotpink;
-      }
       pre {
         padding: 10px;
         margin: -10px;
         background: #eee;
+        overflow: auto;
+        tab-size: 4;
       }
       pre.code {
         white-space: normal !important;
@@ -74,13 +72,23 @@
       }
       .buttons {
         text-align: center;
+        display: grid;
+        flex-wrap: wrap;
+        flex-basis: content;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        gap: 60px;
+        margin: 60px;
       }
       .buttons button {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
         border: 2px solid hotpink;
-        padding: 50px;
+        padding: 30px;
         font-size: 1em;
-        transition: 0.25s;
-        margin: 50px;
+        /*transition: 0.125s;*/
       }
       .buttons button:hover,
       .buttons button:not(.noboost).prehover {
@@ -93,6 +101,12 @@
         padding: 10px;
         border-radius: 10px;
         overflow: hidden;
+      }
+      /* Media query for smaller screens */
+      @media (max-width: 768px) {
+        .buttons {
+          grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+        }
       }
     </style>
     <script type="module" src="https://unpkg.com/ftl.rocks@latest/dist/index.js"></script>
@@ -411,28 +425,26 @@
           <code>.prehover</code> or append it to the existing CSS to have your
           element react to both selectors.
         </p>
-        <pre class="prehoverable"><code>
-a:hover, a.prehover {
+        <pre class="prehoverable"><code>a:hover, a.prehover {
 	background: hotpink;
-}
-				</code></pre>
+}</code></pre>
         <p>
           FTL also fires JavaScript events when a hover event is foreseen.
           Listen for the <code>prehover</code> event for foreseen hovers,
           <code>erphover</code> for cancelled foresights, and
           <code>precursormove</code> to track the ghost cursor's position.
         </p>
-        <pre><code>
-myElement.addEventListener('prehover', foreseenHoverFunc)
+        <pre><code>myElement.addEventListener('prehover', foreseenHoverFunc)
 myElement.addEventListener('erphover', cancelledForsightFunc)
-myElement.addEventListener('precursormove', ghostCursorMovedFunc)
-				</code></pre>
+myElement.addEventListener('precursormove', ghostCursorMovedFunc)</code></pre>
       </div>
       <div class="tile">
         <h1>INSTALL IT</h1>
         <pre><code>npm i ftl.rocks</code></pre>
         <p>or</p>
-        <pre><code>&lt;script type="module" src="https://unpkg.com/ftl.rocks@latest/dist/index.js">&lt;/script></code></pre>
+        <pre><code>&lt;script type="module"
+  src="https://unpkg.com/ftl.rocks@latest/dist/index.js">
+&lt;/script></code></pre>
       </div>
       <div class="tile">
         <h1>TRY IT OUT</h1>

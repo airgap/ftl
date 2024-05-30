@@ -4,7 +4,7 @@ import {dispatchEventOnElement} from './dispatchEventOnElement';
 import {type Point3D} from './Point3D';
 import {analyzePrediction} from './analyzePrediction';
 
-const m = 6;
+const m = 8;
 // Generate a predicted hover location based on the mouse's current and last positions
 export const generatePrediction = (x: number, y: number) => {
 	const // Subtract the old X and Y coords from the new X and Y coords and multiply the result by m
