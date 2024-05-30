@@ -95,49 +95,7 @@
         overflow: hidden;
       }
     </style>
-    <script>
-      const c = (e) => Math.min(200, Math.max(-200, e)),
-        n = { lastPos: { x: 0, y: 0 } },
-        d = (e, n, t) => e.dispatchEvent(new CustomEvent(n, { detail: t })),
-        a = "prehover",
-        h = "erphover",
-        i = (e) => {
-          var t = document.elementFromPoint(e.x, e.y),
-            o = [],
-            r = [];
-          let s = n.prehoveredElement;
-          if (
-            (!n.prehoveredElement ||
-              (t && t === n.prehoveredElement) ||
-              (n.prehoveredElement.classList.remove(a),
-              d(n.prehoveredElement, h)),
-            t && n.prehoveredElement !== t && s)
-          )
-            for (; s.parentNode; ) r.push((s = s.parentNode));
-          if (t) {
-            for (s = t; s.parentNode; ) o.push((s = s.parentNode));
-            for (s of r)
-              s instanceof Element && o.includes(s) && s.classList.remove(a);
-            for (const m of o)
-              m instanceof Element && r.indexOf(m) < 0 && m.classList.add(a);
-            t.classList.add(a), d(t, a, e), (n.prehoveredElement = t);
-          }
-        },
-        m = 8,
-        p = (e, t) => {
-          var o = c((e - n.lastPos.x) * m),
-            r = c((t - n.lastPos.y) * m),
-            o = {
-              x: e + o,
-              y: t + r,
-              d: Math.pow(Math.pow(o, 2) + Math.pow(r, 2), 0.5),
-            };
-          d(document, "precursormove", o), i(o), (n.lastPos = { x: e, y: t });
-        };
-      document.addEventListener("mousemove", ({ clientX: e, clientY: n }) =>
-        p(e, n),
-      );
-    </script>
+    <script type="module" src="https://unpkg.com/ftl.rocks@latest/dist/index.js"></script>
   </head>
   <body>
     <div id="precursor" class="unmoving"></div>
@@ -473,6 +431,8 @@ myElement.addEventListener('precursormove', ghostCursorMovedFunc)
       <div class="tile">
         <h1>INSTALL IT</h1>
         <pre><code>npm i ftl.rocks</code></pre>
+        or
+        <pre><code><script type="module" src="https://unpkg.com/ftl.rocks@latest/dist/index.js"></script></code></pre>
       </div>
       <div class="tile">
         <h1>TRY IT OUT</h1>
